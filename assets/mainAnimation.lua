@@ -1,12 +1,12 @@
 return {
-	imageSrc = "assets/main.png",
+	imageSrc = "assets/karateka.png",
 	defaultState = "idle",
 	states = {
 		idle = {
 			frameCount = 1,
 			offsetY = 0,
-			frameW = 64,
-			frameH = 64,
+			frameW = 128,
+			frameH = 128,
 			nextState = "idle",
 			switchDelay = 0
 		}

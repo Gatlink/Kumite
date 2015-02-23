@@ -3,19 +3,22 @@ require 'gameObject'
 require 'enemy'
 require 'player'
 
+local background
 local playerObject, enemyObject
 
 function love.load()
-	love.graphics.setBackgroundColor(182, 202, 182)
-	love.window.setMode(800, 600)
+  love.window.setMode(800, 600)
+  love.graphics.setBackgroundColor(255, 255, 255)
+
+  background = love.graphics.newImage('assets/background.png')
 
 	playerObject = Player
-	enemyObject = Enemy.new(100, 200, playerObject)
+	-- enemyObject = Enemy.new(100, 200, playerObject)
 end
 
 function love.update(dt)
 	playerObject:update(dt)
-	enemyObject:update(dt)
+	-- enemyObject:update(dt)
 
 	if Controls.isKeyPressed('escape') then
 		love.event.push('quit')
@@ -28,6 +31,7 @@ function love.update(dt)
 end
 
 function love.draw()
+  love.graphics.draw(background, 0, 0)
 	playerObject:draw()
-	enemyObject:draw()
+	-- enemyObject:draw()
 end
