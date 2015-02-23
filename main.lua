@@ -1,3 +1,4 @@
+require 'aphrodisiacs/controls'
 require 'gameObject'
 require 'enemy'
 require 'player'
@@ -15,17 +16,18 @@ end
 function love.update(dt)
 	playerObject:update(dt)
 	enemyObject:update(dt)
+
+	if Controls.isKeyPressed('escape') then
+		love.event.push('quit')
+		return
+	elseif Controls.isKeyPressed(' ') then
+		playerObject:hit()
+	end
+
+	Controls.update()
 end
 
 function love.draw()
 	playerObject:draw()
 	enemyObject:draw()
-end
-
-function love.keypressed(key)
-	if key == 'escape' then
-		love.event.push('quit')
-	elseif key == ' ' then
-		playerObject:hit()
-	end
 end

@@ -1,12 +1,12 @@
-require 'animlove'
+require 'aphrodisiacs/love-animation/animlove'
+require 'aphrodisiacs/vector'
 
 GameObject = {}
 GameObject.__index = GameObject
 
 function GameObject.new(x, y, animFile, imgFile)
 	local new = {
-		x = x,
-		y = y,
+		pos = Vector.new(x, y),
 		sprite = LoveAnimation.new(animFile, imgFile)
 	}
 
@@ -18,7 +18,7 @@ function GameObject.new(x, y, animFile, imgFile)
 end
 
 function GameObject:update(dt)
-	self.sprite:setPosition(self.x, self.y)
+	self.sprite:setPosition(self.pos.x, self.pos.y)
 	self.sprite:update(dt)
 end
 

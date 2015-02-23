@@ -23,22 +23,22 @@ end
 
 function Enemy:update(dt)
 	if self.state == EnemyState.Approaching then
-		if self.x > self.target.x then
+		if self.pos.x > self.target.pos.x then
 			self.sprite:setHorizontalFlip(false)
-			self.x = math.max(self.x - SPEED * dt, self.target.x + XDISTANCE)
+			self.pos.x = math.max(self.pos.x - SPEED * dt, self.target.pos.x + XDISTANCE)
 		else
 			self.sprite:setHorizontalFlip(true)
-			self.x = math.min(self.x + SPEED * dt, self.target.x - XDISTANCE)
+			self.pos.x = math.min(self.pos.x + SPEED * dt, self.target.pos.x - XDISTANCE)
 		end
 
-		if self.y > self.target.y then
-			self.y = math.max(self.y - SPEED * dt, self.target.y)
+		if self.pos.y > self.target.pos.y then
+			self.pos.y = math.max(self.pos.y - SPEED * dt, self.target.pos.y)
 		else
-			self.y = math.min(self.y + SPEED * dt, self.target.y)
+			self.pos.y = math.min(self.pos.y + SPEED * dt, self.target.pos.y)
 		end
 	end
 
-	if math.abs(self.x - self.target.x) == XDISTANCE and self.y == self.target.y then
+	if math.abs(self.pos.x - self.target.pos.x) == XDISTANCE and self.pos.y == self.target.pos.y then
 		self.state = EnemyState.Idle
 	end
 
