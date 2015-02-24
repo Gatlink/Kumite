@@ -9,6 +9,7 @@ function GameObject.new(x, y, animFile, imgFile)
 		pos = Vector.new(x, y),
 		sprite = LoveAnimation.new(animFile, imgFile)
 	}
+  new.sprite:setPosition(new.pos.x, new.pos.y)
 
 	new.sprite.relativeOriginX = 0.5
 	new.sprite.relativeOriginY = 0.5

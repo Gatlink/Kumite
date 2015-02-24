@@ -1,14 +1,14 @@
 require 'gameObject'
 
-local SCALEONHIT = 2
-local SCALESPEEDONHIT = 10
+local SCALEONHIT = 1.5
+local SCALEDURATIONONHIT = 0.5
 local scale = 1
 
 Player = GameObject.new(500, 500, 'assets/mainAnimation.lua')
 Player.sprite:setHorizontalFlip(true)
 
 function Player:update(dt)
-	scale = math.max(1, scale - SCALESPEEDONHIT * dt)
+	scale = math.max(1, scale - SCALEONHIT * dt / SCALEDURATIONONHIT)
 
 	GameObject.update(self, dt)
 end

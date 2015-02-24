@@ -1,13 +1,12 @@
 return {
 	imageSrc = "assets/arrow.png",
-	defaultState = "idle",
+	defaultState = "default",
 	states = {
-		idle = {
+		default = {
 			frameCount = 1,
-			offsetY = 0,
 			frameW = 32,
 			frameH = 32,
-			nextState = "idle",
+			nextState = "default",
 			switchDelay = 0
 		}
 	}
