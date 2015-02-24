@@ -1,4 +1,4 @@
-require 'aphrodisiacs/controls'
+require 'aphrodisiacs/utils/controls'
 require 'gameObject'
 require 'enemy'
 require 'player'

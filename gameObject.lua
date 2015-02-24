@@ -1,5 +1,5 @@
 require 'aphrodisiacs/love-animation/animlove'
-require 'aphrodisiacs/vector'
+require 'aphrodisiacs/utils/vector'
 
 GameObject = {}
 GameObject.__index = GameObject
