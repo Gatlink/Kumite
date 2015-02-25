@@ -18,7 +18,7 @@ function love.load()
 	playerObject = Player
 	-- enemyObject = Enemy.new(100, 200, playerObject)
 
-  Key.init(playerObject.pos.x - 32, playerObject.pos.y - 82)
+  Key.init(playerObject.pos.x, playerObject.pos.y - 90)
   Key.generateNewKeys(3)
 end
 
@@ -31,17 +31,13 @@ function love.update(dt)
 	playerObject:update(dt)
 	-- enemyObject:update(dt)
 
-  Key.updateAll(dt)
-
-	if Controls.isKeyPressed(' ') then
-		playerObject:hit()
-	end
-
   local currentKey = Key.getCurrent()
   if currentKey and Controls.isKeyPressed(currentKey:getDirection()) then
     playerObject:hit()
     Key.validateCurrent()
   end
+
+  Key.updateAll(dt)
 
 	Controls.update()
 end

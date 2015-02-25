@@ -17,7 +17,7 @@ Key.__index = Key
 setmetatable(Key, GameObject)
 
 function Key.new(direction)
-  local new = GameObject.new(keyStartX + #all * (spriteSize + 5), keyY, 'assets/arrowAnimation.lua')
+  local new = GameObject.new(0, 0, 'assets/arrowAnimation.lua')
   new.direction = direction
 
   new.sprite:setRotation(direction * math.pi / 2)
@@ -47,16 +47,30 @@ function Key.updateAll(dt)
   if #all == 0 then
     Key.generateNewKeys(3)
   end
+
+  Key.computeKeyPositions()
+
+  for _, key in ipairs(all) do
+    key:update(dt)
+  end
 end
 
 function Key.drawAll()
-  for _, key in ipairs(all) do
-    key:draw()
+  for _, item in ipairs(all) do
+    item:draw()
   end
 end
 
 function Key.validateCurrent()
   table.remove(all, 1)
+end
+
+function Key.computeKeyPositions()
+  local totalLength = #all * spriteSize + (#all - 1) * 5
+  for i, key in ipairs(all) do
+    key.pos.x = keyStartX - totalLength * 0.5 + (i - 1) * (spriteSize + 5)
+    key.pos.y = keyY
+  end
 end
 
 function Key:getDirection()
