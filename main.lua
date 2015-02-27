@@ -34,6 +34,8 @@ function love.update(dt)
   if currentKey and Controls.isKeyPressed(currentKey:getDirection()) then
     playerObject:hit()
     Key.validateCurrent()
+  elseif Controls.isOnePressed(Key.getDirections()) then
+    Key.invalidateCurrent()
   end
 
   Key.updateAll(dt)
