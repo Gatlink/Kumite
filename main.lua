@@ -19,7 +19,6 @@ function love.load()
 	-- enemyObject = Enemy.new(100, 200, playerObject)
 
   Key.init(playerObject.pos.x, playerObject.pos.y - 90)
-  Key.generateNewKeys(3)
 end
 
 function love.update(dt)
@@ -43,6 +42,7 @@ function love.update(dt)
 end
 
 function love.draw()
+  love.graphics.setColor(255, 255, 255)
   love.graphics.draw(background, 0, 0)
 	playerObject:draw()
 	-- enemyObject:draw()
